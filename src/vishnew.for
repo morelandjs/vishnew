@@ -60,7 +60,8 @@ C   [5] H.Song, Ph.D thesis 2009, arXiv:0908.3656 [nucl-th].
 
       Integer MaxT
 
-      Common /DXY/ DX,DY,LMAX
+      Common /DXY/ DX,DY
+      Double Precision LMAX, LPHYS
       Integer NDX, NDY, NDT ! used in Freeze-out subroutine
       Common /NXYTD/ NDX, NDY, NDT
 
@@ -121,8 +122,9 @@ C========= Inputting Parameters ===========================================
 C===========================================================================
 
       ! set lattice step size according to lattice dimensions
-      DX = LMAX/LS
-      DY = LMAX/LS
+      LPHYS = LMAX * (1.0 - 1.0/(2.0*LS))
+      DX = LPHYS/LS
+      DY = LPHYS/LS
 
 !-----------End of reading parameters from file-------------------------
 
