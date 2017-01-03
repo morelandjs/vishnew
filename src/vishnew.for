@@ -69,6 +69,9 @@ C   [5] H.Song, Ph.D thesis 2009, arXiv:0908.3656 [nucl-th].
 
       call prepareInputFun() ! this is the initialization function in InputFun.for
 
+      DX=0.1d0
+      DY=0.1d0
+
 !----------Start of reading parameters from file------------------------
 C========= Inputting Parameters ===========================================
       Open(1,FILE='vishnew.conf',STATUS='OLD')
@@ -84,6 +87,8 @@ C========= Inputting Parameters ===========================================
       ! basic stuff
       Read(1,*) DT_1             ! timestep [fm]
       Read(1,*) LS               ! lattice size in positive direction (total size = 2*LS + 1)
+      Read(1,*) DX               ! Grid step size along x [fm]
+      Read(1,*) DY               ! Grid step size along y [fm]
       Read(1,*) R0Bdry           ! boundary for viscous regulation [fm]
 
       Read(1,*)
@@ -117,9 +122,6 @@ C========= Inputting Parameters ===========================================
 
       Close(1)
 C===========================================================================
-
-      DX=0.02d0
-      DY=0.02d0
 
 !-----------End of reading parameters from file-------------------------
 
