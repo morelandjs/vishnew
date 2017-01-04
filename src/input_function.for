@@ -79,6 +79,7 @@
       Common /R0Aeps/ R0,Aeps
       Integer LS
       Common /LS/ LS
+      Double Precision LMAX, LPHYS
 
       Integer QNum, ArgIndex ! QNum is the total number of arguments, ArgIndex gives the index to the one currently reading
 
@@ -139,6 +140,7 @@
         If (varName=="zeta_s_width") VisBulkWidth=DResult
 
         If (varName=="ils") LS=IResult ! Lattice size and R0Boudary
+        If (varName=="lmax") LMAX=DResult ! Lattice -LMAX to LMAX [fm]
         If (varName=="r0") R0Bdry=DResult
         If (varName=="r0bdry") R0Bdry=DResult
 
@@ -153,6 +155,11 @@
         If (varName=="initialpitensor") Initialpitensor=IResult ! initialization of pi tensor
 
       End Do ! ArgIndex
+
+      ! set grid according to lattice size and steps
+      LPHYS = LMAX * (1.0 - 1.0/(2.0*LS))
+      DX = LPHYS/LS
+      DY = LPHYS/LS
 
       End Subroutine
 !-----------------------------------------------------------------------
