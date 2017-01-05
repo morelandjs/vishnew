@@ -79,7 +79,6 @@
       Common /R0Aeps/ R0,Aeps
       Integer LS
       Common /LS/ LS
-      Double Precision DXDY
 
       Integer QNum, ArgIndex ! QNum is the total number of arguments, ArgIndex gives the index to the one currently reading
 
@@ -140,8 +139,8 @@
         If (varName=="zeta_s_width") VisBulkWidth=DResult
 
         If (varName=="ils") LS=IResult ! lattice step size
-        If (varName=="dxdy") DX=DResult ! spatialstep size [fm]
-        If (varName=="dxdy") DY=DResult ! spatialstep size [fm]
+        If (varName=="dxy") DX=DResult ! spatialstep size [fm]
+        If (varName=="dxy") DY=DResult ! spatialstep size [fm]
         If (varName=="r0") R0Bdry=DResult ! R0Boundary
         If (varName=="r0bdry") R0Bdry=DResult
 
