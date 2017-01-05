@@ -61,7 +61,7 @@ C   [5] H.Song, Ph.D thesis 2009, arXiv:0908.3656 [nucl-th].
       Integer MaxT
 
       Common /DXY/ DX,DY
-      Double Precision LMAX, LPHYS
+      Double Precision DXDY
       Integer NDX, NDY, NDT ! used in Freeze-out subroutine
       Common /NXYTD/ NDX, NDY, NDT
 
@@ -85,8 +85,8 @@ C========= Inputting Parameters ===========================================
 
       ! basic stuff
       Read(1,*) DT_1             ! timestep [fm]
+      Read(1,*) DXDY             ! spatialstep [fm]
       Read(1,*) LS               ! lattice size in positive direction (total size = 2*LS + 1)
-      Read(1,*) LMAX             ! lattice extends from -LMAX to LMAX [fm]
       Read(1,*) R0Bdry           ! boundary for viscous regulation [fm]
 
       Read(1,*)
@@ -121,15 +121,13 @@ C========= Inputting Parameters ===========================================
       Close(1)
 C===========================================================================
 
-      ! set lattice step size according to lattice dimensions
-      LPHYS = LMAX * (1.0 - 1.0/(2.0*LS))
-      DX = LPHYS/LS
-      DY = LPHYS/LS
+      ! set lattice spatial step [fm]
+      DX = DXDY
+      DY = DXDY
 
 !-----------End of reading parameters from file-------------------------
 
       Call readInputFromCML2() ! check CML to see if there are any modifications on parameters
-
 
       ! determine if shear and bulk viscosities are nonzero
       VisNonzero = (VisHRG > 1d-6) .or. (VisMin > 1d-6)
