@@ -98,9 +98,9 @@
         If (varName=="iein") IEin=IResult ! 0: initialize by energy density; 1: initialize by entropy density
         If (varName=="iin") IEin=IResult
 
-        If (varName=="dt") dT_1=DResult ! dT, DX, DY
-        If (varName=="dx") dX=DResult
-        If (varName=="dy") dy=DResult
+        If (varName=="dt") DT_1=DResult ! dT, DX, DY
+        If (varName=="dx") DX=DResult
+        If (varName=="dy") Dy=DResult
 
         If (varName=="edec") EDec=DResult ! decouple energy density, in GeV/fm^3
         If (varName=="e_dec") EDec=DResult
@@ -139,8 +139,6 @@
         If (varName=="zeta_s_width") VisBulkWidth=DResult
 
         If (varName=="ils") LS=IResult ! lattice step size
-        If (varName=="dxy") DX=DResult ! spatialstep size [fm]
-        If (varName=="dxy") DY=DResult ! spatialstep size [fm]
         If (varName=="r0") R0Bdry=DResult ! R0Boundary
         If (varName=="r0bdry") R0Bdry=DResult
 
